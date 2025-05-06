@@ -15,6 +15,7 @@ const coursesQuery = `
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         description TEXT NOT NULL,
+        duration TEXT NOT NULL,
         instructor_id INTEGER NOT NULL,
         image TEXT NOT NULL,
         level TEXT NOT NULL,
