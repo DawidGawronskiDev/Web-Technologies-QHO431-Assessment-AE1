@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 /**
  * Config
@@ -11,10 +12,19 @@ const port = 3000;
 const app = express();
 
 /**
+ * View engine
+ */
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+/**
  * Routes
  */
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.render("index.ejs", {
+    title: "Home",
+    description: "Welcome to our online learning platform!",
+  });
 });
 
 /**
