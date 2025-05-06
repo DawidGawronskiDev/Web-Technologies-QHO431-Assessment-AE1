@@ -44,31 +44,29 @@ const faqsQuery = `
 )`;
 
 function initializeDatabase(db) {
-  /**
-   * Create the instructors table if it doesn't exist.
-   */
-  db.exec(instructorsQuery);
-  console.log("Instructors table created or already exists.");
+  db.exec(instructorsQuery, (err) => {
+    err
+      ? console.error("Error creating instructors table: " + err.message)
+      : console.log("Instructors table created or already exists.");
+  });
 
-  /**
-   * Create the courses table if it doesn't exist.
-   */
-  db.exec(coursesQuery);
-  console.log("Courses table created or already exists.");
+  db.exec(coursesQuery, (err) => {
+    err
+      ? console.error("Error creating courses table: " + err.message)
+      : console.log("Courses table created or already exists.");
+  });
 
-  /**
-   * Create the events table if it doesn't exist.
-   */
-  db.exec(eventsQuery);
-  console.log("Events table created or already exists.");
+  db.exec(eventsQuery, (err) => {
+    err
+      ? console.error("Error creating events table: " + err.message)
+      : console.log("Events table created or already exists.");
+  });
 
-  /**
-   * Create the faqs table if it doesn't exist.
-   */
-  db.exec(faqsQuery);
-  console.log("FAQs table created or already exists.");
-
-  console.log("Database initialized successfully.");
+  db.exec(faqsQuery, (err) => {
+    err
+      ? console.error("Error creating faqs table: " + err.message)
+      : console.log("FAQs table created or already exists.");
+  });
 
   return db;
 }
