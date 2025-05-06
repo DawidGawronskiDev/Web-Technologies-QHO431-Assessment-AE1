@@ -21,11 +21,12 @@ app.set("views", path.join(__dirname, "views"));
  * Routes
  */
 app.get("/", (req, res) => {
-  res.render("index.ejs", {
+  res.render("index", {
     title: "Home",
     description: "Welcome to our online learning platform!",
   });
 });
+app.use("/instructors", require("./routes/instructors"));
 
 /**
  * Server
