@@ -2,6 +2,7 @@ const instructorsQuery = `
     CREATE TABLE IF NOT EXISTS instructors (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
+        title TEXT NOT NULL,
         bio TEXT NOT NULL,
         email TEXT NOT NULL UNIQUE,
         profile_img TEXT NOT NULL,
