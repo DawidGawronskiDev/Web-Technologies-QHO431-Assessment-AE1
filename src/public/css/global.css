@@ -66,13 +66,42 @@ p {
 }
 
 /*
-* General Styles
+* @@@@@@@@@@ General Styles @@@@@@@@@@
 */
 
-.badge {
-  font-size: var(--fs-small);
+/*
+* Navigation Styles
+*/
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-black);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.nav-link::before {
+  position: absolute;
+  content: "";
+  width: 0%;
+  height: 2px;
+  bottom: -2px;
   background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
+}
+
+.nav-link:hover::before {
+  width: 100%;
+  transition: width 0.3s ease-in-out;
 }
