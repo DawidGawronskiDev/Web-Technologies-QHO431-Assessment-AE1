@@ -25,6 +25,8 @@ app.use(express.static(path.join(__dirname, "public")));
 /**
  * Routes
  */
+const apiRoutes = require("./routes/api/v1/index");
+
 app.use("/api/v1", apiRoutes);
 
 /**
