@@ -4,7 +4,7 @@ const path = require("path");
 /**
  * Config
  */
-const port = 3000;
+const port = 5000;
 
 /**
  * Initializes the express application.
