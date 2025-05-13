@@ -1,7 +1,7 @@
 const express = require("express");
-const courseRoutes = require("./coursesRoutes");
-const instructorRoutes = require("./instructorsRoutes");
-const eventsRoutes = require("./eventsRoutes");
+const courseRoutes = require("./courses");
+const instructorRoutes = require("./instructors");
+const eventsRoutes = require("./events");
 
 const router = express.Router();
 
