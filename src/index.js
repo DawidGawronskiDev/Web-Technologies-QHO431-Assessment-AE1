@@ -25,16 +25,6 @@ app.use(express.static(path.join(__dirname, "public")));
 /**
  * Routes
  */
-const apiRoutes = require("./routes/api/v1/index");
-
-app.get("/", (req, res) => {
-  res.render("index", {
-    title: "Home",
-    description: "Welcome to our online learning platform!",
-  });
-});
-app.use("/instructors", require("./routes/instructors"));
-
 app.use("/api/v1", apiRoutes);
 
 /**
