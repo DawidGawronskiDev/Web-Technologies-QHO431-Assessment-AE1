@@ -1,6 +1,6 @@
 const db = require("../lib/db");
 
-class Instructor {
+module.exports = class Instructor {
   static getAll() {
     return new Promise((resolve, reject) => {
       db.all("SELECT * FROM instructors", [], (err, rows) => {
@@ -13,6 +13,4 @@ class Instructor {
       });
     });
   }
-}
-
-module.exports = Instructor;
+};
