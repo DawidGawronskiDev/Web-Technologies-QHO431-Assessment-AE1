@@ -1,5 +1,10 @@
 const Instructor = require("../models/instructor");
 
+/**
+ * @description Get all instructors
+ * @route GET /api/v1/instructors
+ * @access Public
+ */
 async function getInstructors(req, res) {
   try {
     const instructors = await Instructor.getAll();

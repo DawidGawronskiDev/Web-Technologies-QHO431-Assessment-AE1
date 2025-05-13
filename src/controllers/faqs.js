@@ -1,5 +1,10 @@
 const FAQs = require("../models/faqs");
 
+/**
+ * @description Get all FAQs
+ * @route GET /api/v1/faqs
+ * @access Public
+ */
 async function getFAQs(req, res) {
   try {
     const faqs = await FAQs.getAll();

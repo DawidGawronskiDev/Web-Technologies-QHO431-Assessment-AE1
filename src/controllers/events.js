@@ -1,5 +1,10 @@
 const Event = require("../models/event");
 
+/**
+ * @description Get all events
+ * @route GET /api/v1/events
+ * @access Public
+ */
 async function getEvents(req, res) {
   try {
     const events = await Event.getAll();
