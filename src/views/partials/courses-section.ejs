@@ -5,8 +5,8 @@
       <p class="section-description"><%= description %></p>
     </div>
     <div class="grid-layout">
-      <% courses.forEach(course => { %>
-      <div class="card">
+      <% courses.forEach((course, index) => { %>
+      <div class="card fade-in">
         <div class="card-image-container">
           <div class="card-badges-container">
             <span class="badge"><%= course.level %></span>
