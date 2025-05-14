@@ -29,6 +29,10 @@ const apiRoutes = require("./routes/api/v1/index");
 
 app.use("/api/v1", apiRoutes);
 
+app.get("/", (req, res) => {
+  res.render("index", { title: "Home" });
+});
+
 /**
  * Server
  */
