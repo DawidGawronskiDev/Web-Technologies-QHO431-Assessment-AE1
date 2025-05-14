@@ -25,13 +25,13 @@ app.use(express.static(path.join(__dirname, "public")));
 /**
  * Routes
  */
-const apiRoutes = require("./routes/api/v1/index");
-
-app.use("/api/v1", apiRoutes);
+const coursesRoutes = require("./routes/courses");
 
 app.get("/", (req, res) => {
   res.render("index", { title: "Home" });
 });
+
+app.use("/courses", coursesRoutes);
 
 /**
  * Server

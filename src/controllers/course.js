@@ -9,7 +9,11 @@ async function getCourses(req, res) {
   try {
     const courses = await Course.getAll();
 
-    res.json({ data: courses }, { status: 200 });
+    res.render("courses", {
+      title: "Courses",
+      description: "List of all courses",
+      courses,
+    });
   } catch (error) {
     console.error("Error fetching courses: ", error.message);
     res.status(500).json({ error: "Internal Server Error" });
