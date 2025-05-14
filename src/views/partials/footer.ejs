@@ -1,0 +1,33 @@
+<footer>
+  <style>
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+
+      text-align: center;
+    }
+    .footer-description {
+      font-size: 0.875rem;
+      color: var(--color-dark-gray);
+    }
+    .footer-trademark {
+      font-size: 0.875rem;
+      color: var(--color-medium-gray);
+    }
+  </style>
+  <div class="container footer-container">
+    <div>
+      <%- include('./logo.ejs') %>
+      <p class="footer-description">
+        Empowering learners everywhere, one course at a time.
+      </p>
+    </div>
+    <%- include('./navigation.ejs') %>
+    <p class="footer-trademark">
+      © <%= new Date().getFullYear() %> Learning Sphere. All rights reserved.
+    </p>
+  </div>
+</footer>

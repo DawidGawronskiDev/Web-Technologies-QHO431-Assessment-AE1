@@ -49,9 +49,6 @@
 body {
   font-family: var(--ff-inter);
   color: var(--color-dark);
-
-  display: grid;
-  gap: 3rem;
 }
 
 h1,
