@@ -1,14 +1,39 @@
-<div class="logo">
+<a href="" class="logo">
   <style>
     .logo {
-      font-family: var(--ff-poppins);
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-    .logo a {
       text-decoration: none;
-      color: var(--color-dark);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+
+      font-family: var(--ff-poppins);
+
+      color: var(--dark);
+    }
+    .logo-sphere {
+      width: 2rem;
+      aspect-ratio: 1 / 1;
+
+      border-radius: 100%;
+      background: linear-gradient(
+        90deg,
+        var(--color-accent-1),
+        var(--color-accent-3)
+      );
+    }
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    @media only screen and (max-width: 40rem) {
+      .logo-text {
+        display: none;
+      }
     }
   </style>
-  <a href="/"> Learning Sphere </a>
-</div>
+  <div class="logo-sphere"></div>
+  <span class="logo-text">Learning Sphere</span>
+</a>
