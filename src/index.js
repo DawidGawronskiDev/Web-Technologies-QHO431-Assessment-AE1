@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
  */
 const coursesRoutes = require("./routes/courses");
 const instructorsRoutes = require("./routes/instructors");
+const eventsRoutes = require("./routes/events");
 
 app.get("/", (req, res) => {
   res.render("index", { title: "Home" });
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 
 app.use("/courses", coursesRoutes);
 app.use("/instructors", instructorsRoutes);
+app.use("/events", eventsRoutes);
 
 /**
  * Server
