@@ -6,7 +6,11 @@
       align-items: center;
       justify-content: center;
 
-      background-color: var(--white);
+      background: linear-gradient(
+        90deg,
+        var(--color-accent-1),
+        var(--color-accent-3)
+      );
 
       padding: 2rem;
       border-radius: 2rem;
@@ -28,38 +32,10 @@
       z-index: 20;
     }
     .hero-description {
-      width: 100%;
-      max-width: 600px;
       color: var(--color-dark-gray);
-    }
-    .hero-decoration {
-      position: absolute;
-      width: 125%;
-      aspect-ratio: 1 / 1;
-      background-color: var(--color-error);
-
-      filter: blur(100px);
-
-      border-radius: 100%;
-      z-index: 10;
-    }
-    .hero-decoration-1 {
-      top: 0;
-      left: 0;
-      transform: translate(-50%, -50%);
-
-      background-color: var(--color-accent-1);
-    }
-    .hero-decoration-2 {
-      bottom: 0;
-      right: 0;
-      transform: translate(50%, 50%);
-
-      background-color: var(--color-accent-3);
+      max-width: 70ch;
     }
   </style>
-  <div class="hero-decoration hero-decoration-1"></div>
-  <div class="hero-decoration hero-decoration-2"></div>
   <div class="hero-content">
     <h1>Learning Sphere</h1>
     <p class="hero-description">
