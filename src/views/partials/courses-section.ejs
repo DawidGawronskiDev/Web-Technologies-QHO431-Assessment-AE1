@@ -8,8 +8,8 @@
       <% courses.forEach(course => { %>
       <div class="card">
         <div class="card-image-container">
-          <div class="card-badge badge">
-            <span><%= course.level %></span>
+          <div class="card-badges-container">
+            <span class="badge"><%= course.level %></span>
           </div>
           <img
             src="<%= course.image %>"

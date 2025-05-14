@@ -26,12 +26,14 @@ app.use(express.static(path.join(__dirname, "public")));
  * Routes
  */
 const coursesRoutes = require("./routes/courses");
+const instructorsRoutes = require("./routes/instructors");
 
 app.get("/", (req, res) => {
   res.render("index", { title: "Home" });
 });
 
 app.use("/courses", coursesRoutes);
+app.use("/instructors", instructorsRoutes);
 
 /**
  * Server
