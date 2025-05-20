@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
-    <%- include('./partials/header') %> <%-
-    include('./partials/instructors-section', { instructors, }) %> <%-
-    include("./partials/footer") %>
+    <%- include('./partials/header') %>
+    <!---->
+    <%- include('./partials/section', { title: "Our Instructors", description:
+    "Our team of passionate educators bring real-world experience to the virtual classrooms", 
+    content: include("./partials/instructors-cards", { instructors }) }) %>
+    <!---->
+    <%- include("./partials/footer") %>
   </body>
 </html>

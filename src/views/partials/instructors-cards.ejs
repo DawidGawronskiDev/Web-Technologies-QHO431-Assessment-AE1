@@ -1,0 +1,19 @@
+<div class="grid-layout">
+  <% instructors.forEach(instructor => { %>
+  <div class="card fade-in">
+    <div class="card-image-container">
+      <div class="card-badges-container">
+        <% instructor.specialization.split(", ").forEach(item => { %>
+        <span class="badge"><%= item %></span>
+        <% }) %>
+      </div>
+      <img src="<%= instructor.profile_img %>" alt="" class="card-image" />
+    </div>
+    <div class="card-header">
+      <span class="card-caption caption"><%= instructor.title %></span>
+      <h3 class="card-title"><%= instructor.name %></h3>
+      <p class="card-description"><%= instructor.bio %></p>
+    </div>
+  </div>
+  <% }) %>
+</div>
