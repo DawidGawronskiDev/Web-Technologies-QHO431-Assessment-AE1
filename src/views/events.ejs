@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
-    <%- include('./partials/header') %> <%- include('./partials/events-section',
-    { events }) %> <%- include("./partials/footer") %>
+    <%- include('./partials/header') %>
+    <!---->
+    <%- include("./partials/section", {
+      title: "Live Sessions & Special Events Schedule Page",
+      description: "Stay tuned for more workshops and guest sessions throughout the term!",
+      content: include("./partials/events-cards", { events }),
+    }) %>
+    <!---->
+    <%- include("./partials/footer") %>
   </body>
 </html>
