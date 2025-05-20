@@ -29,11 +29,13 @@ const indexRoutes = require("./routes/index");
 const coursesRoutes = require("./routes/courses");
 const instructorsRoutes = require("./routes/instructors");
 const eventsRoutes = require("./routes/events");
+const faqsRoutes = require("./routes/faqs");
 
 app.get("/", indexRoutes);
 app.use("/courses", coursesRoutes);
 app.use("/instructors", instructorsRoutes);
 app.use("/events", eventsRoutes);
+app.use("/faqs", faqsRoutes);
 
 /**
  * Server

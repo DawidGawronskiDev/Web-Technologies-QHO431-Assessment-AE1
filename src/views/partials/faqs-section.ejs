@@ -1,0 +1,67 @@
+<section class="section faqs-section">
+  <style>
+    .faqs-section .card:nth-child(1) {
+      background: linear-gradient(
+        90deg,
+        var(--color-accent-1),
+        var(--color-accent-3)
+      );
+    }
+
+    .faqs-section .card:nth-child(1) path {
+      stroke: var(--color-white);
+    }
+
+    .faqs-section .card:nth-child(1) .card-title,
+    .faqs-section .card:nth-child(1) .card-description {
+      color: var(--color-white);
+    }
+  </style>
+  <div class="container">
+    <div class="section-header">
+      <h3 class="section-title">Frequently Asked Questions</h3>
+      <p class="section-description">
+        Here are some common questions and answers about our platform.
+      </p>
+    </div>
+    <div class="grid-layout">
+      <% faqs.forEach(faq => { %>
+      <div class="card fade-in">
+        <div class="card-header">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="25"
+            viewBox="0 0 24 25"
+            fill="none"
+          >
+            <path
+              d="M12 22.6807C17.5228 22.6807 22 18.2035 22 12.6807C22 7.15782 17.5228 2.68066 12 2.68066C6.47715 2.68066 2 7.15782 2 12.6807C2 18.2035 6.47715 22.6807 12 22.6807Z"
+              stroke="var(--color-dark)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9.09003 9.68075C9.32513 9.01241 9.78918 8.44885 10.4 8.08988C11.0108 7.7309 11.7289 7.59968 12.4272 7.71946C13.1255 7.83923 13.7588 8.20227 14.2151 8.74427C14.6714 9.28628 14.9211 9.97227 14.92 10.6807C14.92 12.6807 11.92 13.6807 11.92 13.6807"
+              stroke="var(--color-dark)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 17.6807H12.01"
+              stroke="var(--color-dark)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <h3 class="card-title"><%= faq.question %></h3>
+          <p class="card-description"><%= faq.answer %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>

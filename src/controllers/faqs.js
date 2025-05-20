@@ -9,7 +9,11 @@ async function getFAQs(req, res) {
   try {
     const faqs = await FAQs.getAll();
 
-    res.status(200).json({ data: faqs }, { status: 200 });
+    res.render("faqs", {
+      title: "FAQs",
+      description: "Frequently Asked Questions",
+      faqs,
+    });
   } catch (error) {
     res.status(500).json({ message: "Error fetching FAQs" });
   }
