@@ -1,39 +1,49 @@
 <div class="hero container">
   <style>
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding: 0;
+      width: 100%;
 
       background: linear-gradient(
-        90deg,
-        var(--color-accent-1),
-        var(--color-accent-3)
-      );
+            0deg,
+            hsla(220, 9%, 46%, 0.05) 1px,
+            transparent 1px
+          )
+          center repeat,
+        linear-gradient(90deg, hsla(220, 9%, 46%, 0.05) 1px, transparent 1px)
+          center repeat,
+        linear-gradient(
+          90deg,
+          hsla(44, 97%, 60%, 0.2),
+          hsla(24, 90%, 50%, 0.2),
+          hsla(338, 78%, 56%, 0.2)
+        );
+      background-size: 40px 40px, 40px 40px, 100% 100%;
 
-      padding: 2rem;
       border-radius: 2rem;
-
-      height: 420px;
-
-      position: relative;
-      overflow: hidden;
     }
     .hero-content {
-      text-align: center;
-
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 1rem;
 
-      z-index: 20;
+      padding: 2rem 2rem 0 2rem;
+
+      text-align: center;
     }
     .hero-description {
+      max-width: 60ch;
       color: var(--color-dark-gray);
-      max-width: 70ch;
+    }
+    .dashboard-image {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+
+      margin-top: 2rem;
+      border-radius: 1rem 1rem 0 0;
     }
   </style>
   <div class="hero-content">
@@ -44,5 +54,6 @@
       develop new skills or simply stay curious, LearnSphere is here to support
       your learning journey.
     </p>
+    <img src="/images/dashboard.jpg" alt="Dashboard" class="dashboard-image" />
   </div>
 </div>
