@@ -39,6 +39,9 @@
         />
       </div>
       <div class="section-header">
+        <%- include('./breadcrumbs.ejs', { breadcrumbs: [ { name: "Home", href:
+        "/" }, { name: "Instructors", href: "/instructors" }, {name:
+        instructor.name, href: null} ] }) %>
         <span class="caption"><%= instructor.title %></span>
         <h3 class="section-title"><%= instructor.name %></h3>
         <p class="section-description"><%= instructor.bio %></p>
