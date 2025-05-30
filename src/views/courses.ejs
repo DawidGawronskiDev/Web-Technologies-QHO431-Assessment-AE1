@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
-    <%- include('./partials/header') %> <%-
-    include('./partials/courses-section', { title: 'Courses', description:
-    'Explore our courses and start learning today!', courses }) %> <%-
-    include("./partials/footer") %>
+    <%- include('./partials/header') %>
+    <!--  -->
+    <%- include('./partials/breadcrumbs.ejs', { breadcrumbs: [{ name: "Home",
+    href: "/" }, { name: "Courses", href: null }] }) %>
+    <!--  -->
+    <%- include('./partials/courses-section', { title: 'Courses', description:
+    'Explore our courses and start learning today!', courses }) %>
+    <!--  -->
+    <%- include("./partials/footer") %>
   </body>
 </html>

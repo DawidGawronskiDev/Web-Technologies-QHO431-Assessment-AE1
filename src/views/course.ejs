@@ -11,7 +11,8 @@
     <%- include('./partials/header') %>
     <!--  -->
     <%- include('./partials/breadcrumbs.ejs', { breadcrumbs: [ { name: "Home",
-    href: "/" }, { name: "Courses", href: "/courses" } ] }) %>
+    href: "/" }, { name: "Courses", href: "/courses" }, { name: course.name,
+    href: null } ] }) %>
     <!--  -->
     <%- include('./partials/course-section', { course }) %>
     <!--  -->
