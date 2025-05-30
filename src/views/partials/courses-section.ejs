@@ -6,25 +6,27 @@
     </div>
     <div class="grid-layout">
       <% courses.forEach((course, index) => { %>
-      <div class="card fade-in">
-        <div class="card-image-container">
-          <div class="card-badges-container">
-            <span class="badge"><%= course.level %></span>
+      <a href="/courses/<%= course.id %>">
+        <div class="card fade-in">
+          <div class="card-image-container">
+            <div class="card-badges-container">
+              <span class="badge"><%= course.level %></span>
+            </div>
+            <img
+              src="<%= course.image %>"
+              alt="<%= course.name %>"
+              class="card-image"
+            />
           </div>
-          <img
-            src="<%= course.image %>"
-            alt="<%= course.name %>"
-            class="card-image"
-          />
+          <div class="card-header">
+            <span class="card-caption caption"
+              >Duration • <%= course.duration %></span
+            >
+            <h3 class="header-title"><%= course.name %></h3>
+            <p class="card-description"><%= course.description %></p>
+          </div>
         </div>
-        <div class="card-header">
-          <span class="card-caption caption"
-            >Duration • <%= course.duration %></span
-          >
-          <h3 class="header-title"><%= course.name %></h3>
-          <p class="card-description"><%= course.description %></p>
-        </div>
-      </div>
+      </a>
       <% }) %>
     </div>
   </div>

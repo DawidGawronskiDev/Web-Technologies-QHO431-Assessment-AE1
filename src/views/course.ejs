@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <%- include('./partials/header') %>
+    <!--  -->
+    <%- include('./partials/breadcrumbs.ejs', { breadcrumbs: [ { name: "Home",
+    href: "/" }, { name: "Courses", href: "/courses" } ] }) %>
+    <!--  -->
+    <%- include('./partials/course-section', { course }) %>
+    <!--  -->
+    <% if (instructor) { %> <%- include('./partials/instructors-section', {
+    title: `Instructor: ${instructor.name}`, description: `Learn from the best
+    in the industry`, instructors: [instructor] }) %> <% } %>
+    <!-- -->
+    <%- include("./partials/footer") %>
+  </body>
+</html>

@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
-    <%- include('./partials/header') %> <%-
-    include('./partials/instructors-section', { instructors, }) %> <%-
-    include("./partials/footer") %>
+    <%- include('./partials/header') %> <%- include('./partials/breadcrumbs', {
+    breadcrumbs: [ { name: "Home", href: "/" }, { name: "Instructors", href:
+    "/instructors" }, ], }) %> <%- include('./partials/instructors-section', {
+    instructors, }) %> <%- include("./partials/footer") %>
   </body>
 </html>

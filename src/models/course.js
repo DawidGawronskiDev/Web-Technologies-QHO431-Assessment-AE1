@@ -14,6 +14,19 @@ module.exports = class Course {
     });
   }
 
+  static async getCourseById(courseId) {
+    return new Promise((resolve, reject) => {
+      db.get("SELECT * FROM courses WHERE id = ?", [courseId], (err, row) => {
+        if (err) {
+          console.error("Error fetching course: ", err.message);
+          reject(err);
+        } else {
+          resolve(row);
+        }
+      });
+    });
+  }
+
   static async getCoursesByInstructorId(instructorId) {
     return new Promise((resolve, reject) => {
       db.all(
