@@ -23,8 +23,17 @@
 
       border-radius: 1rem;
     }
+    /* 646 */
+    @media only screen and (max-width: 646px) {
+      .section-content {
+        flex-direction: column;
+      }
+    }
   </style>
   <div class="container">
+    <%- include('./breadcrumbs.ejs', { breadcrumbs: [ { name: "Home", href: "/"
+    }, { name: "Instructors", href: "/instructors" }, {name: instructor.name,
+    href: null} ] }) %>
     <div class="section-content">
       <div class="instructor-image-container">
         <div class="card-badges-container">
@@ -39,11 +48,8 @@
         />
       </div>
       <div class="section-header">
-        <%- include('./breadcrumbs.ejs', { breadcrumbs: [ { name: "Home", href:
-        "/" }, { name: "Instructors", href: "/instructors" }, {name:
-        instructor.name, href: null} ] }) %>
         <span class="caption"><%= instructor.title %></span>
-        <h3 class="section-title"><%= instructor.name %></h3>
+        <h3 class="section-title title"><%= instructor.name %></h3>
         <p class="section-description"><%= instructor.bio %></p>
       </div>
     </div>
