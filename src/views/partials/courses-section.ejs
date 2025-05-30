@@ -4,7 +4,7 @@
       <h2 class="section-title"><%= title %></h2>
       <p class="section-description"><%= description %></p>
     </div>
-    <div class="grid-layout">
+    <div class="<%= typeof layout !== 'undefined' ? layout : 'grid-layout' %>">
       <% courses.forEach((course, index) => { %>
       <a href="/courses/<%= course.id %>">
         <div class="card fade-in">

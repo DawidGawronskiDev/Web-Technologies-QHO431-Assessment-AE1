@@ -17,17 +17,17 @@
     <%- include('./partials/instructor-section') %>
     <!--  -->
     <% if (courses && courses.length > 0) { %>
-    <!--  -->
+    <!-- Courses -->
     <%- include('./partials/courses-section', { title: `Courses by
     ${instructor.name}`, description: `Explore Our Available Courses created by
-    ${instructor.name}.`, courses }) %>
+    ${instructor.name}.`, layout: 'list-layout', courses }) %>
     <!--  -->
     <% } %>
     <!--  Events  -->
     <% if (events && events.length > 0) { %> <%-
     include('./partials/events-section', { title: `Events by
     ${instructor.name}`, description: `Explore upcoming and past events hosted
-    by ${instructor.name}.`, events }) %>
+    by ${instructor.name}.`, layout: 'list-layout', events }) %>
     <!--  -->
     <% } %>
     <!--  -->

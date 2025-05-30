@@ -119,6 +119,30 @@ a {
   gap: 1rem;
 }
 
+/* List Layout */
+
+.list-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list-layout .card {
+  display: flex;
+  flex-direction: row;
+}
+
+.list-layout .card-image-container {
+  width: 8rem;
+  aspect-ratio: 1 / 1;
+
+  margin-right: 1rem;
+}
+
+.list-layout .card-header {
+  flex: 1;
+}
+
 .title {
   margin-top: 0.25rem;
 }
@@ -226,6 +250,8 @@ a .card-image {
   margin: 0.5rem;
 
   display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
@@ -246,6 +272,12 @@ a .card-image {
 }
 .card-table {
   font-size: 0.875rem;
+}
+.card-table tr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 .card-table th,
 td {
