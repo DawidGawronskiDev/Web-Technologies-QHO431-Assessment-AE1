@@ -13,4 +13,24 @@ module.exports = class Course {
       });
     });
   }
+
+  static async getCoursesByInstructorId(instructorId) {
+    return new Promise((resolve, reject) => {
+      db.all(
+        "SELECT * FROM courses WHERE instructor_id = ?",
+        [instructorId],
+        (err, rows) => {
+          if (err) {
+            console.error(
+              "Error fetching courses by instructor ID: ",
+              err.message
+            );
+            reject(err);
+          } else {
+            resolve(rows);
+          }
+        }
+      );
+    });
+  }
 };

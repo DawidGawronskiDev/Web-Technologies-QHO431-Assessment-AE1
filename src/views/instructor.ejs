@@ -9,7 +9,13 @@
   </head>
   <body>
     <%- include('./partials/header') %> <%-
-    include('./partials/instructor-section') %> <%- include("./partials/footer")
-    %>
+    include('./partials/instructor-section') %> <% if (events && events.length >
+    0) { %> <%- include('./partials/courses-section', { title: `Courses by
+    ${instructor.name}`, description: `Explore Our Available Courses created by
+    ${instructor.name}.`, courses }) %> <% } %> <% if (events && events.length >
+    0) { %> <%- include('./partials/events-section', { title: `Events by
+    ${instructor.name}`, description: `Explore upcoming and past events hosted
+    by ${instructor.name}.`, events }) %> <% } %> <%-
+    include("./partials/footer") %>
   </body>
 </html>
