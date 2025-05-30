@@ -9,7 +9,27 @@
     .nav-link {
       font-size: 0.875rem;
       text-decoration: none;
-      color: var(--dark);
+      color: var(--color-dark);
+
+      position: relative;
+    }
+    .nav-link::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+
+      width: 0%;
+      height: 2px;
+
+      background: linear-gradient(
+        90deg,
+        var(--color-accent-1),
+        var(--color-accent-3)
+      );
+    }
+    .nav-link:hover::before {
+      width: 100%;
+      transition: 0.2s;
     }
   </style>
   <ul class="nav-links-list">
