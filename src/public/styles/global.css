@@ -143,6 +143,16 @@ a {
   flex: 1;
 }
 
+@media only screen and (max-width: 600px) {
+  .list-layout .card {
+    flex-direction: column;
+  }
+  .list-layout .card-image-container {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
 .title {
   margin-top: 0.25rem;
 }
