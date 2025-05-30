@@ -26,4 +26,24 @@ module.exports = class Event {
       );
     });
   }
+
+  static async getEventByInstructorId(instructorId) {
+    return new Promise((resolve, reject) => {
+      db.all(
+        "SELECT * FROM events WHERE instructor_id = ?",
+        [instructorId],
+        (err, rows) => {
+          if (err) {
+            console.error(
+              "Error fetching events by instructor ID: ",
+              err.message
+            );
+            reject(err);
+          } else {
+            resolve(rows);
+          }
+        }
+      );
+    });
+  }
 };

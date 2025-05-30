@@ -55,3 +55,6 @@
     </div>
   </div>
 </section>
+<% if (events && events.length > 0) { %> <%- include('./events-section', {
+title: `Events by ${instructor.name}`, description: `Explore upcoming and past
+events hosted by ${instructor.name}.`, events }) %> <% } %>

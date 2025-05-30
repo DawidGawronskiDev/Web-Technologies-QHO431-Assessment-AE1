@@ -9,6 +9,8 @@ async function getCourses(req, res) {
   try {
     const courses = await Course.getAll();
 
+    console.log(courses);
+
     res.render("courses", {
       title: "Courses",
       description: "List of all courses",

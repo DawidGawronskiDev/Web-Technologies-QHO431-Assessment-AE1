@@ -1,4 +1,5 @@
 const Instructor = require("../models/instructor");
+const Event = require("../models/event");
 
 /**
  * @description Get all instructors
@@ -24,6 +25,8 @@ async function getInstructors(req, res) {
 async function getInstructor(req, res) {
   try {
     const instructor = await Instructor.getInstructor(req.params.id);
+    const events = await Event.getEventByInstructorId(req.params.id);
+
     if (!instructor) {
       return res.status(404).json({ message: "Instructor not found" });
     }
@@ -32,6 +35,7 @@ async function getInstructor(req, res) {
       title: instructor.name,
       description: instructor.bio,
       instructor,
+      events,
     });
   } catch (error) {
     res.status(500).json({ message: "Error fetching instructor" });
