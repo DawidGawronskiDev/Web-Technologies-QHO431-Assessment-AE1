@@ -17,8 +17,8 @@
     <%- include('./partials/course-section', { course }) %>
     <!--  -->
     <% if (instructor) { %> <%- include('./partials/instructors-section', {
-    title: `Instructor: ${instructor.name}`, description: `Learn from the best
-    in the industry`, instructors: [instructor] }) %> <% } %>
+    title: "Instructors", description: `Learn from the best in the industry`,
+    instructors: [instructor] }) %> <% } %>
     <!-- -->
     <%- include("./partials/footer") %>
   </body>
