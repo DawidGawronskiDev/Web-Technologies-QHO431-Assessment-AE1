@@ -9,11 +9,8 @@
       <div class="card fade-in">
         <div class="card-image-container">
           <div class="card-badges-container">
-            <% const now = new Date(); const eventDate = new
-            Date(event.event_date); const isUpcoming = eventDate > now ?
-            "upcoming" : "past"; %>
+            <%- include('./status', {date: event.event_date}) %>
             <span class="card-badge badge"><%= event.event_type %></span>
-            <div class="status <%= isUpcoming %>"></div>
           </div>
           <img
             src="<%= `/images/events/${event.id}.jpg` %>"
