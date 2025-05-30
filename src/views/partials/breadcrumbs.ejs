@@ -1,0 +1,29 @@
+<div aria-label="breadcrumbs">
+  <style>
+    .breadcrumbs-list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
+
+      font-size: 0.875rem;
+      margin: 0 0 0.5rem 0;
+    }
+    .breadcrumbs-link {
+      color: var(--color-dark-gray);
+    }
+    .breadcrumbs-link:hover {
+      transition: 0.2s;
+      color: var(--color-dark);
+    }
+  </style>
+  <ol class="breadcrumbs-list">
+    <% breadcrumbs.forEach((item, index) => { %>
+    <li>
+      <a href="<%= item.href %>" class="breadcrumbs-link"><%= item.name %></a>
+    </li>
+    <% if (index < breadcrumbs.length - 1) { %>
+    <span>/</span>
+    <% } %> <% }) %>
+  </ol>
+</div>
