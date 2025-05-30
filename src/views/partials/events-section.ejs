@@ -26,26 +26,10 @@
           <h3 class="card-title"><%= event.title %></h3>
           <p class="card-description"><%= event.description %></p>
         </div>
-        <table class="card-table">
-          <tbody>
-            <tr>
-              <td>Instructor</td>
-              <td><%= event.instructor_name %></td>
-            </tr>
-            <tr>
-              <td>Event Date</td>
-              <td><%= `${new Date(event.event_date).toUTCString()}` %></td>
-            </tr>
-            <tr>
-              <td>Location</td>
-              <td><%= event.location %></td>
-            </tr>
-            <tr>
-              <td>Duration</td>
-              <td><%= event.duration %></td>
-            </tr>
-          </tbody>
-        </table>
+        <%- include('./table', { rows: [ { label: 'Instructor', value:
+        event.instructor_name }, { label: 'Event Date', value: new
+        Date(event.event_date).toUTCString() }, { label: 'Location', value:
+        event.location }, { label: 'Duration', value: event.duration } ] }) %>
       </div>
       <% }) %>
     </div>

@@ -280,20 +280,3 @@ a .card-image {
 
   margin-top: 0.25rem;
 }
-.card-table {
-  font-size: 0.875rem;
-}
-.card-table tr {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.card-table th,
-td {
-  padding: 0.5rem 0;
-}
-.card-table td:nth-child(2) {
-  font-weight: 300;
-  color: var(--color-medium-gray);
-}
