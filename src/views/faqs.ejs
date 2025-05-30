@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
-    <%- include('partials/header') %> <%- include('partials/faqs-section') %>
+    <%- include('partials/header') %>
+    <!---->
+    <%- include('partials/section', {
+      title: "Frequently Asked Questions",
+      description: "Here are some common questions and answers about our platform.",
+      content: include('partials/faqs-cards', { faqs }),
+    }) %>
+    <!---->
     <%- include('partials/footer') %>
   </body>
 </html>

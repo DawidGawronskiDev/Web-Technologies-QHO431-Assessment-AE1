@@ -4,15 +4,12 @@
       <h3 class="section-title"><%= title %></h3>
       <p class="section-description"><%= description %></p>
     </div>
-    <div class="grid-layout">
+    <div class="<%= typeof layout !== 'undefined' ? layout : 'grid-layout' %>">
       <% events.forEach(event => { %>
       <div class="card fade-in">
         <div class="card-image-container">
           <div class="card-badges-container">
-            <% const now = new Date(); const eventDate = new
-            Date(event.event_date); const isUpcoming = eventDate > now ?
-            "upcoming" : "past"; %>
-            <div class="status <%= isUpcoming %>"></div>
+            <%- include('./status', {date: event.event_date}) %>
             <span class="card-badge badge"><%= event.event_type %></span>
           </div>
           <img
@@ -26,26 +23,10 @@
           <h3 class="card-title"><%= event.title %></h3>
           <p class="card-description"><%= event.description %></p>
         </div>
-        <table class="card-table">
-          <tbody>
-            <tr>
-              <td>Instructor</td>
-              <td><%= event.instructor_name %></td>
-            </tr>
-            <tr>
-              <td>Event Date</td>
-              <td><%= event.event_date %></td>
-            </tr>
-            <tr>
-              <td>Location</td>
-              <td><%= event.location %></td>
-            </tr>
-            <tr>
-              <td>Duration</td>
-              <td><%= event.duration %></td>
-            </tr>
-          </tbody>
-        </table>
+        <%- include('./table', { rows: [ { label: 'Instructor', value:
+        event.instructor_name }, { label: 'Event Date', value: new
+        Date(event.event_date).toUTCString() }, { label: 'Location', value:
+        event.location }, { label: 'Duration', value: event.duration } ] }) %>
       </div>
       <% }) %>
     </div>

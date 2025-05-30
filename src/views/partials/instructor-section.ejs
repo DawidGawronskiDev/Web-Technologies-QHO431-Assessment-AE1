@@ -1,0 +1,54 @@
+<section class="section">
+  <style>
+    /* * {
+      outline: 1px solid rgba(255, 0, 0, 0.5);
+    } */
+    .section-content {
+      width: 100%;
+
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .section-content > * {
+      flex: 1;
+    }
+    .instructor-image-container {
+      position: relative;
+    }
+    .instructor-image {
+      width: 100%;
+      object-fit: contain;
+
+      border-radius: 1rem;
+    }
+    /* 646 */
+    @media only screen and (max-width: 646px) {
+      .section-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <div class="container">
+    <div class="section-content">
+      <div class="instructor-image-container">
+        <div class="card-badges-container">
+          <% instructor.specialization.split(", ").forEach(item => { %>
+          <span class="badge"><%= item %></span>
+          <% }) %>
+        </div>
+        <img
+          src="<%= instructor.profile_img %>"
+          alt="<%= instructor.name %>"
+          class="instructor-image"
+        />
+      </div>
+      <div class="section-header">
+        <span class="caption"><%= instructor.title %></span>
+        <h3 class="section-title title"><%= instructor.name %></h3>
+        <p class="section-description"><%= instructor.bio %></p>
+      </div>
+    </div>
+  </div>
+</section>

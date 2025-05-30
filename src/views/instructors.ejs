@@ -9,11 +9,20 @@
   </head>
   <body>
     <%- include('./partials/header') %>
+<<<<<<< HEAD
     <!---->
     <%- include('./partials/section', { title: "Our Instructors", description:
     "Our team of passionate educators bring real-world experience to the virtual classrooms", 
     content: include("./partials/instructors-cards", { instructors }) }) %>
     <!---->
+=======
+    <!--  -->
+    <%- include('./partials/breadcrumbs', { breadcrumbs: [ { name: "Home", href:
+    "/" }, { name: "Instructors", href: "/instructors" }, ], }) %>
+    <!--  -->
+    <%- include('./partials/instructors-section', { instructors, }) %>
+    <!--  -->
+>>>>>>> 538dc79ec6cff62ff23a14f28d52069b292b25da
     <%- include("./partials/footer") %>
   </body>
 </html>

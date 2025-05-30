@@ -1,7 +1,7 @@
 const db = require("../lib/db");
 
 module.exports = class Faqs {
-  static getAll() {
+  static async getAll() {
     return new Promise((resolve, reject) => {
       db.all("SELECT * FROM faqs", [], (err, rows) => {
         if (err) {

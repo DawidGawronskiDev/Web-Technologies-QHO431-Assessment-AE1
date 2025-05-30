@@ -1,0 +1,54 @@
+<section class="section">
+  <style>
+    /* * {
+      outline: 1px solid rgba(255, 0, 0, 0.5);
+    } */
+    .section-content {
+      width: 100%;
+
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .section-content > * {
+      flex: 1;
+    }
+    .section-image-container {
+      position: relative;
+    }
+    .section-image {
+      width: 100%;
+      object-fit: contain;
+
+      border-radius: 1rem;
+    }
+    /* 646 */
+    @media only screen and (max-width: 646px) {
+      .section-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <div class="container">
+    <div class="section-content">
+      <div class="section-image-container">
+        <div class="card-badges-container">
+          <span class="badge"><%= course.level %></span>
+        </div>
+        <img
+          src="<%= course.image %>"
+          alt="<%= course.title %>"
+          class="section-image"
+        />
+      </div>
+      <div>
+        <div class="section header">
+          <span class="caption">Duration • <%= course.duration %></span>
+          <h3 class="section-title title"><%= course.name %></h3>
+          <p class="section-description"><%= course.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

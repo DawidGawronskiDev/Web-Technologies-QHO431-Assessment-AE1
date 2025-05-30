@@ -1,29 +1,33 @@
 <section class="section">
   <div class="container">
     <div class="section-header">
-      <h3 class="section-title">Meet Our Instructors</h3>
-      <p class="section-description">
-        Our team of passionate educators bring real-world experience to the
-        virtual classrooms
-      </p>
+      <h3 class="section-title"><%= title %></h3>
+      <p class="section-description"><%= description %></p>
     </div>
     <div class="grid-layout">
       <% instructors.forEach(instructor => { %>
-      <div class="card fade-in">
-        <div class="card-image-container">
-          <div class="card-badges-container">
-            <% instructor.specialization.split(", ").forEach(item => { %>
-            <span class="badge"><%= item %></span>
-            <% }) %>
+      <a href="/instructors/<%= instructor.id %>">
+        <div class="card fade-in">
+          <div class="card-image-container">
+            <div class="card-badges-container">
+              <% instructor.specialization.split(", ").forEach((item, index) =>
+              { %>
+              <span class="badge"><%= item %></span>
+              <% }) %>
+            </div>
+            <img
+              src="<%= instructor.profile_img %>"
+              alt=""
+              class="card-image"
+            />
           </div>
-          <img src="<%= instructor.profile_img %>" alt="" class="card-image" />
+          <div class="card-header">
+            <span class="card-caption caption"><%= instructor.title %></span>
+            <h3 class="card-title title"><%= instructor.name %></h3>
+            <p class="card-description"><%= instructor.bio %></p>
+          </div>
         </div>
-        <div class="card-header">
-          <span class="card-caption caption"><%= instructor.title %></span>
-          <h3 class="card-title"><%= instructor.name %></h3>
-          <p class="card-description"><%= instructor.bio %></p>
-        </div>
-      </div>
+      </a>
       <% }) %>
     </div>
   </div>

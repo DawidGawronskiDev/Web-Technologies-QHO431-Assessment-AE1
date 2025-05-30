@@ -1,4 +1,6 @@
 const Instructor = require("../models/instructor");
+const Event = require("../models/event");
+const Course = require("../models/course");
 
 /**
  * @description Get all instructors
@@ -8,6 +10,7 @@ const Instructor = require("../models/instructor");
 async function getInstructors(req, res) {
   try {
     const instructors = await Instructor.getAll();
+    console.log(instructors);
 
     res.render("instructors", {
       title: "Instructors",
@@ -20,6 +23,31 @@ async function getInstructors(req, res) {
   }
 }
 
+async function getInstructor(req, res) {
+  try {
+    const instructor = await Instructor.getInstructor(req.params.id);
+    const events = await Event.getEventByInstructorId(req.params.id);
+    const courses = await Course.getCoursesByInstructorId(req.params.id);
+
+    console.log(courses);
+
+    if (!instructor) {
+      return res.status(404).json({ message: "Instructor not found" });
+    }
+
+    res.render("instructor", {
+      title: instructor.name,
+      description: instructor.bio,
+      instructor,
+      events,
+      courses,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching instructor" });
+  }
+}
+
 module.exports = {
   getInstructors,
+  getInstructor,
 };

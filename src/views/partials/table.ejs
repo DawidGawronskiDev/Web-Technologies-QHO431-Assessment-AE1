@@ -1,0 +1,35 @@
+<table class="card-table">
+  <style>
+    .card-table {
+      font-size: 0.875rem;
+    }
+    .card-table tr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .card-table th {
+      text-align: start;
+    }
+    .card-table td {
+      text-align: end;
+    }
+    .card-table th,
+    td {
+      padding: 0.5rem 0;
+    }
+    .card-table td:nth-child(2) {
+      font-weight: 300;
+      color: var(--color-medium-gray);
+    }
+  </style>
+  <tbody>
+    <% rows.forEach((row) => { %>
+    <tr>
+      <th><%= row.label %></th>
+      <td><%= row.value %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

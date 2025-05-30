@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <%- include('./partials/header') %>
+    <!--  -->
+    <%- include('./partials/breadcrumbs.ejs', { breadcrumbs: [{ name: "Home",
+    href: "/" }, { name: "Instructors", href: "/instructors" }, {name:
+    `${instructor.name}`, href: null}] }) %>
+    <!--  -->
+    <%- include('./partials/instructor-section') %>
+    <!--  -->
+    <% if (courses && courses.length > 0) { %>
+    <!-- Courses -->
+    <%- include('./partials/courses-section', { title: `Courses by
+    ${instructor.name}`, description: `Explore Our Available Courses created by
+    ${instructor.name}.`, layout: 'list-layout', courses }) %>
+    <!--  -->
+    <% } %>
+    <!--  Events  -->
+    <% if (events && events.length > 0) { %> <%-
+    include('./partials/events-section', { title: `Events by
+    ${instructor.name}`, description: `Explore upcoming and past events hosted
+    by ${instructor.name}.`, layout: 'list-layout', events }) %>
+    <!--  -->
+    <% } %>
+    <!--  -->
+    <%- include("./partials/footer") %>
+  </body>
+</html>
