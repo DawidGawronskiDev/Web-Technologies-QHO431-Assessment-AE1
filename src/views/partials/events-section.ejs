@@ -34,7 +34,7 @@
             </tr>
             <tr>
               <td>Event Date</td>
-              <td><%= event.event_date %></td>
+              <td><%= `${new Date(event.event_date).toUTCString()}` %></td>
             </tr>
             <tr>
               <td>Location</td>
