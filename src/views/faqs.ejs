@@ -9,12 +9,13 @@
   </head>
   <body>
     <%- include('partials/header') %>
+    <!--  -->
+    <%- include('./partials/breadcrumbs.ejs', { breadcrumbs: [{ name: "Home",
+    href: "/" }, { name: "FAQs", href: null }] }) %>
     <!---->
-    <%- include('partials/section', {
-      title: "Frequently Asked Questions",
-      description: "Here are some common questions and answers about our platform.",
-      content: include('partials/faqs-cards', { faqs }),
-    }) %>
+    <%- include('partials/section', { title: `Frequently Asked Questions`,
+    description: `Here are some common questions and answers about our
+    platform.`, content: include('partials/faqs-cards', { faqs }), }) %>
     <!---->
     <%- include('partials/footer') %>
   </body>
