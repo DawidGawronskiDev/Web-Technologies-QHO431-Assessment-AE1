@@ -9,16 +9,15 @@
   </head>
 
   <body>
-    <%- include('./partials/header') %>
-    <!--  -->
-    <%- include('./partials/breadcrumbs.ejs', { breadcrumbs: [{ name: "Home",
-    href: "/" }, { name: "Events", href: null }] }) %>
-    <!---->
-    <%- include("./partials/section", { title: `Live Sessions & Special Events
-    Schedule Page`, description: `Stay tuned for more workshops and guest
-    sessions throughout the term!`, content: include("./partials/events-cards",
-    { events }), }) %>
-    <!---->
+    <%- include('./partials/header') %> <%-
+    include('./partials/breadcrumbs.ejs', { breadcrumbs: [{ name: "Home", href:
+    "/" }, { name: "Events", href: null }] }) %>
+    <main>
+      <%- include("./partials/section", { title: `Live Sessions & Special Events
+      Schedule Page`, description: `Stay tuned for more workshops and guest
+      sessions throughout the term!`, content:
+      include("./partials/events-cards", { events }), }) %>
+    </main>
     <%- include("./partials/footer") %>
   </body>
 </html>

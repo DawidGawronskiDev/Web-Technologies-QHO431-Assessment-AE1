@@ -69,6 +69,13 @@ body {
   flex-direction: column;
 }
 
+main {
+  --space: 4rem;
+  display: grid;
+  gap: var(--space);
+  margin: var(--space) 0;
+}
+
 h1,
 h2,
 h3,

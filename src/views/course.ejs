@@ -8,18 +8,16 @@
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
   <body>
-    <%- include('./partials/header') %>
-    <!--  -->
-    <%- include('./partials/breadcrumbs.ejs', { breadcrumbs: [ { name: "Home",
-    href: "/" }, { name: "Courses", href: "/courses" }, { name: course.name,
-    href: null } ] }) %>
-    <!--  -->
-    <%- include('./partials/course-section', { course }) %>
-    <!--  -->
-    <% if (instructor) { %> <%- include('./partials/instructors-section', {
-    title: "Instructors", description: `Learn from the best in the industry`,
-    instructors: [instructor] }) %> <% } %>
-    <!-- -->
+    <%- include('./partials/header') %> <%-
+    include('./partials/breadcrumbs.ejs', { breadcrumbs: [ { name: "Home", href:
+    "/" }, { name: "Courses", href: "/courses" }, { name: course.name, href:
+    null } ] }) %>
+    <main>
+      <%- include('./partials/course-section', { course }) %> <% if (instructor)
+      { %> <%- include('./partials/instructors-section', { title: "Instructors",
+      description: `Learn from the best in the industry`, instructors:
+      [instructor] }) %> <% } %>
+    </main>
     <%- include("./partials/footer") %>
   </body>
 </html>
