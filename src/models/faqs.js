@@ -1,7 +1,17 @@
 const db = require("../lib/db");
 
-module.exports = class Faqs {
-  static async getAll() {
+/**
+ * FAQs model for interacting with the faqs table in the database.
+ * Provides methods to retrieve FAQ data.
+ * @module Faqs
+ * @property {Function} getAll - Retrieves all FAQs from the database.
+ */
+class Faqs {
+  /**
+   * Retrieves all FAQs from the database.
+   * @returns {Promise<Array>} A promise that resolves to an array of FAQ objects.
+   */
+  static getAll() {
     return new Promise((resolve, reject) => {
       db.all("SELECT * FROM faqs", [], (err, rows) => {
         if (err) {
@@ -13,4 +23,6 @@ module.exports = class Faqs {
       });
     });
   }
-};
+}
+
+module.exports = Faqs;

@@ -1,7 +1,18 @@
 const db = require("../lib/db");
 
-module.exports = class Event {
-  static async getAll() {
+/**
+ * Event model for interacting with the events table in the database.
+ * Provides methods to retrieve event data.
+ * @module Event
+ * @property {Function} getAll - Retrieves all events from the database.
+ * @property {Function} getEventByInstructorId - Retrieves events by instructor ID.
+ */
+class Event {
+  /**
+   * Retrieves all events from the database.
+   * @returns {Promise<Array>} A promise that resolves to an array of event objects.
+   */
+  static getAll() {
     return new Promise((resolve, reject) => {
       db.all(
         `
@@ -27,7 +38,12 @@ module.exports = class Event {
     });
   }
 
-  static async getEventByInstructorId(instructorId) {
+  /**
+   * Retrieves an event by its ID.
+   * @param {number} eventId - The ID of the event to retrieve.
+   * @returns {Promise<Object>} A promise that resolves to an event object.
+   */
+  static getEventByInstructorId(instructorId) {
     return new Promise((resolve, reject) => {
       db.all(
         "SELECT e.*, i.name AS instructor_name FROM events e JOIN instructors i ON i.id = e.instructor_id  WHERE instructor_id = ?",
@@ -46,4 +62,6 @@ module.exports = class Event {
       );
     });
   }
-};
+}
+
+module.exports = Event;
