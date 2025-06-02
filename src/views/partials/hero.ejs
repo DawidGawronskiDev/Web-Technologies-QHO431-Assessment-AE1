@@ -1,5 +1,13 @@
 <div class="hero container">
   <style>
+    @keyframes move {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 100% 0%;
+      }
+    }
     .hero {
       padding: 0;
       width: 100%;
@@ -21,6 +29,8 @@
       background-size: 40px 40px, 40px 40px, 100% 100%;
 
       border-radius: 2rem;
+
+      animation: move 30s linear infinite;
     }
     .hero-content {
       display: flex;
