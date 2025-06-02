@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <style>
+      * {
+        outline: 1px solid rgba(255, 0, 0, 0.5);
+      }
+
+      #gameboard {
+        width: 600px;
+        aspect-ratio: 1 / 1;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .field[data-symbol="x"] {
+        background-color: #ffcccc;
+      }
+      .field[data-symbol="o"] {
+        background-color: #ccffcc;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/header') %>
+    <main>
+      <div id="gameboard"></div>
+    </main>
+    <%- include("./partials/footer") %>
+    <script>
+      const gameboard = document.getElementById("gameboard");
+
+      class GameBoard {
+        constructor(elem) {
+          this.elem = elem;
+          this.fields = [];
+
+          this.init();
+        }
+
+        init() {
+          this.fields = new Array(9).fill(null).map((_, index) => ({
+            id: index,
+            value: null,
+          }));
+          this.render();
+        }
+
+        render() {
+          this.elem.innerHTML = "";
+
+          this.fields.forEach((field) => {
+            const fieldElem = document.createElement("div");
+            fieldElem.className = "field";
+            fieldElem.dataset.id = field.id;
+            fieldElem.dataset.symbol = field.value;
+            this.elem.appendChild(fieldElem);
+          });
+        }
+      }
+
+      class Player {
+        constructor(name, symbol) {
+          this.name = name;
+          this.symbol = symbol;
+        }
+      }
+
+      class Controller {
+        constructor(gameboard, players) {
+          this.gameboard = gameboard;
+          this.players = players;
+          this.currentPlayerIndex = 0;
+          this.winner = null;
+
+          this.init();
+        }
+
+        init() {
+          this.move();
+        }
+
+        move() {
+          window.addEventListener("click", (e) => {
+            const selectedField = e.target.closest(".field");
+
+            if (
+              !selectedField ||
+              selectedField.dataset.symbol !== "null" ||
+              this.winner
+            ) {
+              return;
+            }
+
+            const updatedFields = this.gameboard.fields.map((field) => {
+              if (field.id === parseInt(selectedField.dataset.id)) {
+                return {
+                  ...field,
+                  value: this.players[this.currentPlayerIndex].symbol,
+                };
+              }
+              return field;
+            });
+
+            this.gameboard.fields = updatedFields;
+            this.gameboard.render();
+
+            selectedField.textContent =
+              this.players[this.currentPlayerIndex].symbol;
+
+            this.checkWinningCombination();
+
+            this.switchPlayer();
+          });
+        }
+
+        switchPlayer() {
+          this.currentPlayerIndex =
+            (this.currentPlayerIndex + 1) % this.players.length;
+        }
+
+        checkWinningCombination() {
+          const winningCombinations = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+          ];
+
+          for (const combination of winningCombinations) {
+            const [a, b, c] = combination;
+            if (
+              this.gameboard.fields[a].value &&
+              this.gameboard.fields[a].value ===
+                this.gameboard.fields[b].value &&
+              this.gameboard.fields[a].value === this.gameboard.fields[c].value
+            ) {
+              this.setWinner(this.players[this.currentPlayerIndex]);
+              break;
+            }
+          }
+        }
+
+        setWinner(winner) {
+          this.winner = winner;
+        }
+      }
+
+      (function () {
+        new Controller(new GameBoard(document.getElementById("gameboard")), [
+          new Player("Player 1", "x"),
+          new Player("Player 2", "o"),
+        ]);
+      })();
+    </script>
+  </body>
+</html>

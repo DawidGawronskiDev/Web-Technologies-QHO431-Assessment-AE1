@@ -37,6 +37,10 @@ app.use("/instructors", instructorsRoutes);
 app.use("/events", eventsRoutes);
 app.use("/faqs", faqsRoutes);
 
+app.use((req, res) => {
+  res.render("game");
+});
+
 /**
  * Server
  */
