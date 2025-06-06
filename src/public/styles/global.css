@@ -107,6 +107,24 @@ a {
   color: var(--color-dark);
 }
 
+button {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  padding: 0.5rem 1rem;
+
+  border-radius: 1rem;
+}
+button:hover {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-1) 0%,
+    var(--color-accent-3) 100%
+  );
+
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
 .fade-in {
   animation: fadeIn 0.2s ease-in-out;
 }
