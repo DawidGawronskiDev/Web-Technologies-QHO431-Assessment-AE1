@@ -11,12 +11,105 @@
       border-bottom: 1px solid var(--color-light-gray);
     }
     .header-container {
+      position: relative;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+
+    .mobile-nav-button {
+      background-color: var(--color-white);
+      color: var(--color-dark);
+
+      width: 2.5rem;
+      height: 2.5rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--color-light-gray);
+    }
+    .mobile-nav-button svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .mobile-nav-content {
+      position: absolute;
+
+      background-color: var(--color-white);
+
+      width: 100%;
+
+      margin-top: 0.5rem;
+      padding: 1rem 0;
+      left: 0%;
+      top: 100%;
+    }
+
+    .mobile-nav-content .nav-links-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media only screen and (max-width: 640px) {
+      #desktop-nav {
+        display: none;
+      }
+      #mobile-nav {
+        display: block;
+      }
+    }
+
+    @media only screen and (min-width: 641px) {
+      #desktop-nav {
+        display: block;
+      }
+      #mobile-nav {
+        display: none;
+      }
+    }
   </style>
   <div class="container header-container">
-    <%- include('./logo') %> <%- include('./navigation') %>
+    <%- include('./logo') %>
+    <div id="desktop-nav"><%- include('./navigation') %></div>
+    <div id="mobile-nav">
+      <button aria-label="Toggle Navigation" class="mobile-nav-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 12h18" />
+          <path d="M3 18h18" />
+          <path d="M3 6h18" />
+        </svg>
+      </button>
+      <div class="mobile-nav-content"><%- include('./navigation') %></div>
+    </div>
   </div>
+  <script>
+    const mobileNav = document.getElementById("mobile-nav");
+    const mobileButton = mobileNav.querySelector(".mobile-nav-button");
+    const mobileContent = mobileNav.querySelector(".mobile-nav-content");
+
+    mobileButton.addEventListener("click", () => {
+      mobileContent.classList.toggle("hidden");
+      mobileButton.textContent = mobileContent.classList.contains("hidden")
+        ? "Menu"
+        : "Close";
+    });
+  </script>
 </header>
