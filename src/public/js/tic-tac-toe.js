@@ -1,4 +1,7 @@
 const gameboard = document.getElementById("gameboard");
+const dialog = document.getElementById("game-dialog");
+const message = document.getElementById("game-message");
+const restartButton = document.getElementById("restart-button");
 
 /**
  * Class representing a player's symbol in the Tic Tac Toe game.
@@ -169,6 +172,15 @@ class Player {
   }
 }
 
+/**
+ * Class representing the game controller for Tic Tac Toe.
+ * @class Controller
+ * @property {GameBoard} gameboard - The game board instance.
+ * @property {Array} players - An array of Player instances.
+ * @property {number} currentPlayerIndex - The index of the current player.
+ * @property {Player|null} winner - The player who has won the game.
+ * @property {boolean} isDraw - Whether the game is a draw.
+ **/
 class Controller {
   constructor(gameboard, players) {
     this.gameboard = gameboard;
@@ -180,6 +192,8 @@ class Controller {
     this.boundHandleMove = this.handleMove.bind(this);
 
     this.init();
+
+    dialog.showModal();
   }
 
   init() {
@@ -324,6 +338,7 @@ class Controller {
           }
         });
         this.gameboard.render();
+        this.renderDialog();
         break;
       }
     }
@@ -337,7 +352,12 @@ class Controller {
       }));
       this.gameboard.fields = updatedFields;
       this.gameboard.render();
+      this.renderDialog();
     }
+  }
+
+  renderDialog() {
+    dialog.showModal();
   }
 
   setWinner(winner) {
