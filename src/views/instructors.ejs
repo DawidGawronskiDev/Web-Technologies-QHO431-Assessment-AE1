@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/global.css" />
-  </head>
-  <body>
-    <%- include('./partials/header') %> <%- include('./partials/breadcrumbs', {
-    breadcrumbs: [ { name: "Home", href: "/" }, { name: "Instructors", href:
-    "/instructors" }, ], }) %>
-    <main>
-      <%- include('./partials/instructors-section', { instructors, }) %>
-    </main>
-    <%- include("./partials/footer") %>
-  </body>
-</html>
+<%- include("./partials/root-layout", {title: "UpSpark | Instructors", content:
+`${include('./partials/breadcrumbs', { breadcrumbs: [ { name: "Home", href: "/"
+}, { name: "Instructors", href: "/instructors" }, ], })}
+<main>${include('./partials/instructors-section', { instructors, })}</main>
+`}) %>

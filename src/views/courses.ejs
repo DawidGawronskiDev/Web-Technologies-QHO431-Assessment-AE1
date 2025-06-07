@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/global.css" />
-  </head>
-  <body>
-    <%- include('./partials/header') %> <%-
-    include('./partials/breadcrumbs.ejs', { breadcrumbs: [{ name: "Home", href:
-    "/" }, { name: "Courses", href: null }] }) %>
-    <main>
-      <%- include('./partials/courses-section', { title: 'Courses', description:
-      'Explore our courses and start learning today!', courses }) %>
-    </main>
-    <%- include("./partials/footer") %>
-  </body>
-</html>
+<%- include("partials/root-layout", { title: "UpSpark | Courses", content: `
+${include('./partials/breadcrumbs.ejs', { breadcrumbs: [{ name: "Home", href:
+"/" }, { name: "Courses", href: null }] })}
+<main>
+  ${include('./partials/courses-section', { title: 'Courses', description:
+  'Explore our courses and start learning today!', courses })}
+</main>
+` }) %>

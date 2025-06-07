@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/global.css" />
-  </head>
-  <body>
-    <%- include('partials/header') %> <%- include('./partials/breadcrumbs.ejs',
-    { breadcrumbs: [{ name: "Home", href: "/" }, { name: "FAQs", href: null }]
-    }) %>
-    <main>
-      <%- include('partials/section', { title: `Frequently Asked Questions`,
-      description: `Here are some common questions and answers about our
-      platform.`, content: include('partials/faqs-cards', { faqs }), }) %>
-    </main>
-    <%- include('partials/footer') %>
-  </body>
-</html>
+<%- include('partials/root-layout', { title: "UpSpark | FAQs", content:
+`${include('./partials/breadcrumbs.ejs', { breadcrumbs: [{ name: "Home", href:
+"/" }, { name: "FAQs", href: null }] })}
+<main>
+  ${include('partials/section', { title: `Frequently Asked Questions`,
+  description: `Here are some common questions and answers about our platform.`,
+  content: include('partials/faqs-cards', { faqs }), })}
+</main>
+` }) %>
