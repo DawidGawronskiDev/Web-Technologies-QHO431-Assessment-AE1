@@ -1,8 +1,8 @@
 <%- include("./partials/root-layout", { title: `UpSpark | ${instructor.name}`,
-content: ` ${include('./partials/instructor-section')}
-${include('./partials/breadcrumbs.ejs', { breadcrumbs: [ { name: "Home", href:
-"/" }, { name: "Instructors", href: "/instructors" }, { name:
-"${instructor.name}", href: null } ] })} ${ courses && courses.length > 0 ?
+content: `${include('./partials/breadcrumbs.ejs', { breadcrumbs: [ { name:
+"Home", href: "/" }, { name: "Instructors", href: "/instructors" }, { name:
+`${instructor.name}`, href: null } ]
+})}${include('./partials/instructor-section')}${ courses && courses.length > 0 ?
 include('./partials/courses-section', { title: `Courses by ${instructor.name}`,
 description: `Explore Our Available Courses created by ${instructor.name}.`,
 layout: 'list-layout', courses }) : null } ${ events && events.length > 0 ?

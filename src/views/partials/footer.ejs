@@ -19,6 +19,13 @@
       font-size: 0.875rem;
       color: var(--color-medium-gray);
     }
+
+    @media only screen and (max-width: 640px) {
+      footer nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
   </style>
   <div class="container footer-container">
     <div>
@@ -27,6 +34,7 @@
         Empowering learners everywhere, one course at a time.
       </p>
     </div>
+
     <%- include('./navigation.ejs') %>
     <p class="footer-trademark">
       © <%= new Date().getFullYear() %> Learning Sphere. All rights reserved.

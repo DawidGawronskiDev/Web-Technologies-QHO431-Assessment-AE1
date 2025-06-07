@@ -110,6 +110,10 @@ a {
   color: var(--color-dark);
 }
 
+button {
+  cursor: pointer;
+}
+
 .fade-in {
   animation: fadeIn 0.2s ease-in-out;
 }
@@ -152,6 +156,14 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
   .list-layout .card {
     flex-direction: column;
   }
@@ -212,6 +224,12 @@ section {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    padding: 0;
+  }
 }
 
 a .card:hover .card-image {

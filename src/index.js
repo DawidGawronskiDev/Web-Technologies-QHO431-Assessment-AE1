@@ -49,6 +49,9 @@ app.use("game", (req, res) => {
   res.render("game");
 });
 
+app.use((req, res, next) => {
+  res.status(404).render("error");
+});
 /**
  * Server
  */

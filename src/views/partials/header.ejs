@@ -7,16 +7,101 @@
       z-index: 999;
 
       background-color: var(--color-white);
-      padding: 0.5rem 0;
       border-bottom: 1px solid var(--color-light-gray);
     }
     .header-container {
+      position: relative;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+
+    .mobile-nav-button {
+      background-color: var(--color-white);
+      color: var(--color-dark);
+
+      width: 2.5rem;
+      height: 2.5rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--color-light-gray);
+    }
+
+    .mobile-nav-button img {
+      width: 1rem;
+      aspect-ratio: 1 / 1;
+    }
+
+    .mobile-nav-content {
+      position: absolute;
+
+      background-color: var(--color-white);
+
+      width: 100%;
+
+      margin-top: 0.5rem;
+      padding: 1rem 0;
+      left: 0%;
+      top: 100%;
+    }
+
+    .mobile-nav-content .nav-links-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media only screen and (max-width: 640px) {
+      #desktop-nav {
+        display: none;
+      }
+      #mobile-nav {
+        display: block;
+      }
+    }
+
+    @media only screen and (min-width: 641px) {
+      #desktop-nav {
+        display: block;
+      }
+      #mobile-nav {
+        display: none;
+      }
+    }
   </style>
   <div class="container header-container">
-    <%- include('./logo') %> <%- include('./navigation') %>
+    <%- include('./logo') %>
+    <div id="desktop-nav"><%- include('./navigation') %></div>
+    <div id="mobile-nav">
+      <button aria-label="Toggle Navigation" class="mobile-nav-button">
+        <img src="/images/icons/menu.svg" alt="Menu Icon" />
+      </button>
+      <div class="mobile-nav-content hidden">
+        <%- include('./navigation') %>
+      </div>
+    </div>
   </div>
+  <script>
+    const mobileNav = document.getElementById("mobile-nav");
+    const mobileButton = mobileNav.querySelector(".mobile-nav-button");
+    const mobileContent = mobileNav.querySelector(".mobile-nav-content");
+
+    mobileButton.addEventListener("click", () => {
+      mobileContent.classList.toggle("hidden");
+    });
+
+    const links = mobileContent.querySelectorAll(".nav-link");
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileContent.classList.add("hidden");
+      });
+    });
+  </script>
 </header>

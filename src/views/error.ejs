@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <style>
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      text-align: center;
+    }
+  </style>
+  <body>
+    <%- include('./partials/header') %> <%-
+    include('./partials/breadcrumbs.ejs', { breadcrumbs: [{ name: "Home", href:
+    "/" }, { name: "Events", href: null }] }) %>
+    <main>
+      <div class="error-container">
+        <h2>Opps... Something went wrong!</h2>
+        <p>
+          We are sorry, but the page you are looking for does not exist or an
+          error occurred.
+        </p>
+        <a href="/">
+          <button>Go to Home</button>
+        </a>
+      </div>
+    </main>
+    <%- include("./partials/footer") %>
+  </body>
+</html>

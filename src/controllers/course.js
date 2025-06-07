@@ -39,8 +39,7 @@ async function getCourse(req, res) {
       instructor,
     });
   } catch (error) {
-    console.error("Error fetching course: ", error.message);
-    res.status(500).json({ error: "Internal Server Error" });
+    throw new Error("Error fetching course details: " + error.message);
   }
 }
 
