@@ -12,6 +12,12 @@ const port = 5000;
 const app = express();
 
 /**
+ * Middleware
+ */
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+/**
  * View engine
  */
 app.set("view engine", "ejs");
@@ -30,14 +36,16 @@ const coursesRoutes = require("./routes/courses");
 const instructorsRoutes = require("./routes/instructors");
 const eventsRoutes = require("./routes/events");
 const faqsRoutes = require("./routes/faqs");
+const contactRoutes = require("./routes/contact");
 
 app.get("/", indexRoutes);
 app.use("/courses", coursesRoutes);
 app.use("/instructors", instructorsRoutes);
 app.use("/events", eventsRoutes);
 app.use("/faqs", faqsRoutes);
+app.use("/contact", contactRoutes);
 
-app.use((req, res) => {
+app.use("game", (req, res) => {
   res.render("game");
 });
 

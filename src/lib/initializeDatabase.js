@@ -45,6 +45,13 @@ const faqsQuery = `
         category TEXT NOT NULL
 )`;
 
+const messagesQuery = `
+    CREATE TABLE IF NOT EXISTS messages (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP )`;
+
 function initializeDatabase(db) {
   db.exec(instructorsQuery, (err) => {
     err
@@ -68,6 +75,12 @@ function initializeDatabase(db) {
     err
       ? console.error("Error creating faqs table: " + err.message)
       : console.log("FAQs table created or already exists.");
+  });
+
+  db.exec(messagesQuery, (err) => {
+    err
+      ? console.error("Error creating messages table: " + err.message)
+      : console.log("Messages table created or already exists.");
   });
 
   return db;
