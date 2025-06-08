@@ -197,4 +197,4 @@ const faqs = [
   },
 ];
 
-module.exports = { instructors, courses, events, faqs };
+export { instructors, courses, events, faqs };

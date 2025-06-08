@@ -1,11 +1,6 @@
-const FAQs = require("../models/faqs");
+import FAQs from "../models/faqs.mjs";
 
-/**
- * @description Get all FAQs
- * @route GET /api/v1/faqs
- * @access Public
- */
-async function getFAQs(req, res) {
+export async function getFAQs(req, res) {
   try {
     const faqs = await FAQs.getAll();
 
@@ -18,7 +13,3 @@ async function getFAQs(req, res) {
     res.status(500).json({ message: "Error fetching FAQs" });
   }
 }
-
-module.exports = {
-  getFAQs,
-};

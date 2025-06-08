@@ -1,13 +1,8 @@
-const Instructor = require("../models/instructor");
-const Event = require("../models/event");
-const Course = require("../models/course");
+import Instructor from "../models/instructor.mjs";
+import Event from "../models/event.mjs";
+import Course from "../models/course.mjs";
 
-/**
- * @description Get all instructors
- * @route GET /api/v1/instructors
- * @access Public
- */
-async function getInstructors(req, res) {
+export async function getInstructors(req, res) {
   try {
     const instructors = await Instructor.getAll();
     console.log(instructors);
@@ -23,7 +18,7 @@ async function getInstructors(req, res) {
   }
 }
 
-async function getInstructor(req, res) {
+export async function getInstructor(req, res) {
   try {
     const instructor = await Instructor.getInstructor(req.params.id);
     const events = await Event.getEventByInstructorId(req.params.id);
@@ -44,8 +39,3 @@ async function getInstructor(req, res) {
     throw new Error();
   }
 }
-
-module.exports = {
-  getInstructors,
-  getInstructor,
-};

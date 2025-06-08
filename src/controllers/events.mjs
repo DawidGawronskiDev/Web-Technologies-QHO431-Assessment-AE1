@@ -1,11 +1,6 @@
-const Event = require("../models/event");
+import Event from "../models/event.mjs";
 
-/**
- * @description Get all events
- * @route GET /api/v1/events
- * @access Public
- */
-async function getEvents(req, res) {
+export async function getEvents(req, res) {
   try {
     const events = await Event.getAll();
 
@@ -19,7 +14,3 @@ async function getEvents(req, res) {
     res.status(500).json({ message: "Error fetching events" });
   }
 }
-
-module.exports = {
-  getEvents,
-};

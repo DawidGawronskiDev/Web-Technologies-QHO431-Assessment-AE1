@@ -1,4 +1,4 @@
-const db = require("../lib/db");
+import db from "../lib/db.mjs";
 
 /**
  * Course model for interacting with the courses table in the database.
@@ -8,7 +8,7 @@ const db = require("../lib/db");
  * @property {Function} getCourseById - Retrieves a course by its ID.
  * @property {Function} getCoursesByInstructorId - Retrieves courses by instructor ID.
  */
-class Course {
+export default class Course {
   /**
    * Retrieves all courses from the database.
    * @returns {Promise<Array>} A promise that resolves to an array of course objects.
@@ -69,5 +69,3 @@ class Course {
     });
   }
 }
-
-module.exports = Course;

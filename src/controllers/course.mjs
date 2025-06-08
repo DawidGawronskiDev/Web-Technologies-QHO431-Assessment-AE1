@@ -1,12 +1,7 @@
-const Course = require("../models/course");
-const Instructor = require("../models/instructor");
+import Course from "../models/course.mjs";
+import Instructor from "../models/instructor.mjs";
 
-/**
- * @description Get all courses
- * @route GET /api/v1/courses
- * @access Public
- */
-async function getCourses(req, res) {
+export async function getCourses(req, res) {
   try {
     const courses = await Course.getAll();
 
@@ -23,7 +18,7 @@ async function getCourses(req, res) {
   }
 }
 
-async function getCourse(req, res) {
+export async function getCourse(req, res) {
   try {
     const course = await Course.getCourseById(req.params.id);
     const instructor = await Instructor.getInstructor(course.instructor_id);
@@ -42,8 +37,3 @@ async function getCourse(req, res) {
     throw new Error("Error fetching course details: " + error.message);
   }
 }
-
-module.exports = {
-  getCourses,
-  getCourse,
-};

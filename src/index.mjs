@@ -1,5 +1,4 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
 
 /**
  * Config
@@ -21,22 +20,22 @@ app.use(express.urlencoded({ extended: true }));
  * View engine
  */
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", "./src/views");
 
 /**
  * Public folder
  */
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("./src/public"));
 
 /**
  * Routes
  */
-const indexRoutes = require("./routes/index");
-const coursesRoutes = require("./routes/courses");
-const instructorsRoutes = require("./routes/instructors");
-const eventsRoutes = require("./routes/events");
-const faqsRoutes = require("./routes/faqs");
-const contactRoutes = require("./routes/contact");
+import indexRoutes from "./routes/index.mjs";
+import coursesRoutes from "./routes/courses.mjs";
+import instructorsRoutes from "./routes/instructors.mjs";
+import eventsRoutes from "./routes/events.mjs";
+import faqsRoutes from "./routes/faqs.mjs";
+import contactRoutes from "./routes/contact.mjs";
 
 app.get("/", indexRoutes);
 app.use("/courses", coursesRoutes);

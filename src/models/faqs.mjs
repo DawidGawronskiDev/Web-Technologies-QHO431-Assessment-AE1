@@ -1,4 +1,4 @@
-const db = require("../lib/db");
+import db from "../lib/db.mjs";
 
 /**
  * FAQs model for interacting with the faqs table in the database.
@@ -6,7 +6,7 @@ const db = require("../lib/db");
  * @module Faqs
  * @property {Function} getAll - Retrieves all FAQs from the database.
  */
-class Faqs {
+export default class Faqs {
   /**
    * Retrieves all FAQs from the database.
    * @returns {Promise<Array>} A promise that resolves to an array of FAQ objects.
@@ -24,5 +24,3 @@ class Faqs {
     });
   }
 }
-
-module.exports = Faqs;

@@ -1,4 +1,4 @@
-const db = require("../lib/db");
+import db from "../lib/db.mjs";
 
 /**
  * Event model for interacting with the events table in the database.
@@ -7,7 +7,7 @@ const db = require("../lib/db");
  * @property {Function} getAll - Retrieves all events from the database.
  * @property {Function} getEventByInstructorId - Retrieves events by instructor ID.
  */
-class Event {
+export default class Event {
   /**
    * Retrieves all events from the database.
    * @returns {Promise<Array>} A promise that resolves to an array of event objects.
@@ -63,5 +63,3 @@ class Event {
     });
   }
 }
-
-module.exports = Event;

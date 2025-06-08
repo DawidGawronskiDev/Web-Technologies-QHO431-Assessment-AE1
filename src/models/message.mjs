@@ -1,4 +1,4 @@
-const db = require("../lib/db");
+import db from "../lib/db.mjs";
 
 /**
  * Message model for interacting with the messages table in the database.
@@ -6,7 +6,7 @@ const db = require("../lib/db");
  * @module Message
  * @property {Function} createMessage - Inserts a new message into the database.
  */
-class Message {
+export default class Message {
   /**
    * Inserts a new message into the database.
    * @param {string} name - The name of the person sending the message.
@@ -30,5 +30,3 @@ class Message {
     });
   }
 }
-
-module.exports = Message;

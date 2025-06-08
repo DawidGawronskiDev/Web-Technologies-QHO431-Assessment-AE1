@@ -1,6 +1,6 @@
-const Course = require("../models/course");
+import Course from "../models/course.mjs";
 
-async function getIndex(req, res) {
+export async function getIndex(req, res) {
   try {
     const courses = await Course.getAll();
 
@@ -15,7 +15,3 @@ async function getIndex(req, res) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
-
-module.exports = {
-  getIndex,
-};

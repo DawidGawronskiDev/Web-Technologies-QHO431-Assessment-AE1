@@ -52,7 +52,7 @@ const messagesQuery = `
         message TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP )`;
 
-function initializeDatabase(db) {
+export default function initializeDatabase(db) {
   db.exec(instructorsQuery, (err) => {
     err
       ? console.error("Error creating instructors table: " + err.message)
@@ -85,5 +85,3 @@ function initializeDatabase(db) {
 
   return db;
 }
-
-module.exports = initializeDatabase;

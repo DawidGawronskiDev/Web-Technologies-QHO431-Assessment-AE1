@@ -1,4 +1,4 @@
-const db = require("../lib/db");
+import db from "../lib/db.mjs";
 
 /**
  * Instructor model for interacting with the instructors table in the database.
@@ -7,7 +7,7 @@ const db = require("../lib/db");
  * @property {Function} getAll - Retrieves all instructors from the database.
  * @property {Function} getInstructor - Retrieves an instructor by their ID.
  */
-class Instructor {
+export default class Instructor {
   /**
    * Retrieves all instructors from the database.
    * @returns {Promise<Array>} A promise that resolves to an array of instructor objects.
@@ -47,5 +47,3 @@ class Instructor {
     });
   }
 }
-
-module.exports = Instructor;
