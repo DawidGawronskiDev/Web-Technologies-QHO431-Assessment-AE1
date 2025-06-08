@@ -24,7 +24,7 @@ export async function getInstructor(req, res) {
     const events = await Event.getEventByInstructorId(req.params.id);
     const courses = await Course.getCoursesByInstructorId(req.params.id);
 
-    if (!instructor) {
+    if (!instructor || !events || !courses) {
       throw new Error("Instructor not found");
     }
 
