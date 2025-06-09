@@ -21,10 +21,13 @@ export async function getCourses(req, res) {
 export async function getCourse(req, res) {
   try {
     const course = await Course.getCourseById(req.params.id);
-    const instructor = await Instructor.getInstructor(course.instructor_id);
+    if (!course) {
+      throw new Error("Course not found");
+    }
 
-    if (!course || !instructor) {
-      return res.status(404).json({ message: "Course not found" });
+    const instructor = await Instructor.getInstructor(course.instructor_id);
+    if (!instructor) {
+      throw new Error("Instructor not found");
     }
 
     res.render("course", {
