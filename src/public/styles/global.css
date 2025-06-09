@@ -255,6 +255,10 @@ section {
   .grid-layout {
     gap: 2rem;
   }
+
+  .list-layout {
+    gap: 2rem;
+  }
 }
 
 a .card:hover .card-image {
