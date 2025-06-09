@@ -230,6 +230,9 @@ section {
   margin: 0.25rem 0 0 0;
   line-height: calc(100% + 0.125rem);
 }
+.section-image-container {
+  width: 100%;
+}
 
 /* Card */
 .card {
