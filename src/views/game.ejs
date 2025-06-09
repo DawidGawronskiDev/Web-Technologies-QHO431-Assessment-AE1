@@ -50,6 +50,12 @@
         box-shadow: 0 0.125rem 0.25rem var(--color-light-gray);
       }
 
+      .field[data-symbol="null"]:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.02);
+        transition: 0.2s;
+      }
+
       .field > * {
         width: 4rem;
         aspect-ratio: 1 / 1;
@@ -65,13 +71,18 @@
     </style>
   </head>
   <body>
-    <%- include('./partials/header') %>
+    <%- include('./partials/header') %> <%-
+    include('./partials/breadcrumbs.ejs', { breadcrumbs: [ { name: "Home", href:
+    "/" }, { name: "Game", href: null } ] }) %>
     <main>
+      <%- include("./partials/section", { title: `Tic Tac Toe`, description:
+      `Play against our advanced AI!`, content: `
       <div class="game-container container">
         <div id="gameboard"></div>
       </div>
+      `}) %>
     </main>
     <%- include("./partials/footer") %>
-    <script src="/js/tic-tac-toe.js"></script>
+    <script type="module" src="/js/game/main.mjs"></script>
   </body>
 </html>
