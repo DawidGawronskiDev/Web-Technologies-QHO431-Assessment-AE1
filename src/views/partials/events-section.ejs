@@ -6,28 +6,30 @@
     </div>
     <div class="<%= typeof layout !== 'undefined' ? layout : 'grid-layout' %>">
       <% events.forEach(event => { %>
-      <div class="card fade-in">
-        <div class="card-image-container">
-          <div class="card-badges-container">
-            <%- include('./status', {date: event.event_date}) %>
-            <span class="card-badge badge"><%= event.event_type %></span>
+      <a href="/events/<%= event.id %>">
+        <div class="card fade-in">
+          <div class="card-image-container">
+            <div class="card-badges-container">
+              <%- include('./status', {date: event.event_date}) %>
+              <span class="card-badge badge"><%= event.event_type %></span>
+            </div>
+            <img
+              src="<%= `/images/events/${event.id}.jpg` %>"
+              alt=""
+              class="card-image"
+            />
           </div>
-          <img
-            src="<%= `/images/events/${event.id}.jpg` %>"
-            alt=""
-            class="card-image"
-          />
+          <div class="card-header">
+            <span class="card-caption caption"><%= event.course_name %></span>
+            <h3 class="card-title"><%= event.title %></h3>
+            <p class="card-description"><%= event.description %></p>
+          </div>
+          <%- include('./table', { rows: [ { label: 'Instructor', value:
+          event.instructor_name }, { label: 'Event Date', value: new
+          Date(event.event_date).toUTCString() }, { label: 'Location', value:
+          event.location }, { label: 'Duration', value: event.duration } ] }) %>
         </div>
-        <div class="card-header">
-          <span class="card-caption caption"><%= event.course_name %></span>
-          <h3 class="card-title"><%= event.title %></h3>
-          <p class="card-description"><%= event.description %></p>
-        </div>
-        <%- include('./table', { rows: [ { label: 'Instructor', value:
-        event.instructor_name }, { label: 'Event Date', value: new
-        Date(event.event_date).toUTCString() }, { label: 'Location', value:
-        event.location }, { label: 'Duration', value: event.duration } ] }) %>
-      </div>
+      </a>
       <% }) %>
     </div>
   </div>

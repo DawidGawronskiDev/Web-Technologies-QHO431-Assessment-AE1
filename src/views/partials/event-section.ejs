@@ -1,0 +1,67 @@
+<section class="section">
+  <style>
+    /* * {
+      outline: 1px solid rgba(255, 0, 0, 0.5);
+    } */
+    .section-content {
+      width: 100%;
+
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .section-content > * {
+      flex: 1;
+    }
+    .section-image-container {
+      position: relative;
+    }
+    .section-image {
+      width: 100%;
+      object-fit: contain;
+
+      border-radius: 1rem;
+    }
+
+    .section-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* 646 */
+    @media only screen and (max-width: 646px) {
+      .section-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <div class="container">
+    <div class="section-content">
+      <div class="section-image-container">
+        <div class="card-badges-container">
+          <%- include('./status', {date: event.event_date}) %>
+          <span class="card-badge badge"><%= event.event_type %></span>
+        </div>
+        <img
+          src="<%= `/images/events/${event.id}.jpg` %>"
+          alt="<%= event.title %>"
+          class="section-image"
+        />
+      </div>
+      <div class="section-info">
+        <div class="section header">
+          <span class="card-caption caption"><%= event.course_name %></span>
+          <h3 class="card-title"><%= event.title %></h3>
+          <p class="card-description"><%= event.description %></p>
+        </div>
+        <%- include('./table', { rows: [ { label: 'Instructor', value:
+        event.instructor_name }, { label: 'Event Date', value: new
+        Date(event.event_date).toUTCString() }, { label: 'Location', value:
+        event.location }, { label: 'Duration', value: event.duration } ] }) %>
+      </div>
+      <% console.log(event, instructor) %>
+    </div>
+  </div>
+</section>

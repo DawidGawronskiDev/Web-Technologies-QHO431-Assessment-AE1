@@ -1,0 +1,10 @@
+<%- include("./partials/root-layout", {title: `UpSpark | ${event.title}`,
+content: `${include('./partials/breadcrumbs.ejs', { breadcrumbs: [ { name:
+"Home", href: "/" }, { name: "Events", href: "/events" }, { name: event.title,
+href: null } ] })}
+<main>
+  ${include('./partials/event-section', { event })} ${instructor ?
+  include('./partials/instructors-section', { title: "Instructor", description:
+  `Learn from the best in the industry`, instructors: [instructor] }) : null}
+</main>
+`}) %>

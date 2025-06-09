@@ -62,4 +62,26 @@ export default class Event {
       );
     });
   }
+
+  /**
+   * Retrieves an event by its ID.
+   * @param {number} eventId - The ID of the event to retrieve.
+   * @returns {Promise<Object>} A promise that resolves to an event object.
+   */
+  static getEventById(eventId) {
+    return new Promise((resolve, reject) => {
+      db.get(
+        "SELECT e.*, i.name AS instructor_name FROM events e JOIN instructors i ON i.id = e.instructor_id WHERE e.id = ?",
+        [eventId],
+        (err, row) => {
+          if (err) {
+            console.error("Error fetching event by ID: ", err.message);
+            reject(err);
+          } else {
+            resolve(row);
+          }
+        }
+      );
+    });
+  }
 }
