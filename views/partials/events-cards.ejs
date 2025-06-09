@@ -65,21 +65,17 @@
 <script>
   const events = <%- JSON.stringify(events) %>;
 
-  // Add event listener to the year filter dropdown
   document.getElementById('year-filter').addEventListener('change', function () {
-    const selectedYear = this.value; // Get the selected year
-    const eventsGrid = document.getElementById('events-grid'); // Get the grid container
+    const selectedYear = this.value;
+    const eventsGrid = document.getElementById('events-grid');
 
-    // Clear all event cards
     eventsGrid.innerHTML = '';
 
-    // Filter events based on the selected year and re-render them
     const filteredEvents = events.filter(event => {
       const eventYear = new Date(event.event_date).getFullYear();
       return selectedYear === '' || eventYear.toString() === selectedYear;
     });
 
-    // Render filtered events
     filteredEvents.forEach(event => {
       const eventCard = document.createElement('a');
       eventCard.href = `/events/${event.id}`;
@@ -105,7 +101,4 @@
       eventsGrid.appendChild(eventCard);
     });
   });
-
-  // Log the events array for debugging purposes
-  console.log(events);
 </script>

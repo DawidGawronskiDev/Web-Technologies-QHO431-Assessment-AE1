@@ -2,15 +2,11 @@ const dialog = document.getElementById("game-dialog");
 const gameResult = document.getElementById("game-result");
 const restartButton = document.getElementById("restart-game");
 
+dialog.close();
+
 /**
  * Class representing the game controller for Tic Tac Toe.
- * @class Controller
- * @property {GameBoard} gameboard - The game board instance.
- * @property {Array} players - An array of Player instances.
- * @property {number} currentPlayerIndex - The index of the current player.
- * @property {Player|null} winner - The player who has won the game.
- * @property {boolean} isDraw - Whether the game is a draw.
- **/
+ */
 export default class Controller {
   constructor(gameboard, players) {
     this.gameboard = gameboard;
@@ -25,6 +21,43 @@ export default class Controller {
   }
 
   init() {
+    dialog.close();
+    this.move();
+    this.setupRestartButton();
+  }
+
+  /**
+   * Sets up the restart button to reset the game when clicked.
+   */
+  setupRestartButton() {
+    restartButton.addEventListener("click", () => {
+      this.resetGame();
+    });
+  }
+
+  /**
+   * Resets the game to its initial state.
+   */
+  resetGame() {
+    // Reset game state
+    this.currentPlayerIndex = 0;
+    this.winner = null;
+    this.isDraw = false;
+
+    // Reset gameboard fields
+    this.gameboard.fields = this.gameboard.fields.map((field) => ({
+      ...field,
+      value: null,
+      success: null,
+    }));
+
+    // Re-render the gameboard
+    this.gameboard.render();
+
+    // Close the dialog
+    dialog.close();
+
+    // Start the game again
     this.move();
   }
 
@@ -76,6 +109,10 @@ export default class Controller {
    * Updates the gameboard and checks for a winning combination.
    **/
   aiMove() {
+    if (this.winner || this.isDraw) {
+      return;
+    }
+
     const availableFields = this.gameboard.fields.filter(
       (field) => field.value === null && field.success !== "true"
     );
@@ -167,7 +204,7 @@ export default class Controller {
         });
         this.gameboard.render();
         this.renderDialog();
-        break;
+        return;
       }
     }
 
