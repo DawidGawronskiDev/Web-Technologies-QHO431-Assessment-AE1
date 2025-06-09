@@ -1,4 +1,6 @@
 const dialog = document.getElementById("game-dialog");
+const gameResult = document.getElementById("game-result");
+const restartButton = document.getElementById("restart-game");
 
 /**
  * Class representing the game controller for Tic Tac Toe.
@@ -20,8 +22,6 @@ export default class Controller {
     this.boundHandleMove = this.handleMove.bind(this);
 
     this.init();
-
-    dialog.showModal();
   }
 
   init() {
@@ -185,6 +185,9 @@ export default class Controller {
   }
 
   renderDialog() {
+    gameResult.textContent = this.isDraw
+      ? "It's a draw!"
+      : `${this.winner.name} wins!`;
     dialog.showModal();
   }
 
