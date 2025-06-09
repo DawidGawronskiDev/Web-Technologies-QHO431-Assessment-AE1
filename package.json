@@ -2,10 +2,10 @@
   "name": "web-technologies-qho431-assessment-ae1",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.mjs",
+  "main": "index.mjs",
   "scripts": {
     "dev": "nodemon index.mjs",
-    "seed": "node src/lib/seed.js"
+    "seed": "node /lib/seed.js"
   },
   "repository": {
     "type": "git",

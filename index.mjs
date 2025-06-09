@@ -20,12 +20,12 @@ app.use(express.urlencoded({ extended: true }));
  * View engine
  */
 app.set("view engine", "ejs");
-app.set("views", "./src/views");
+app.set("views", "./views");
 
 /**
  * Public folder
  */
-app.use(express.static("./src/public"));
+app.use(express.static("./public"));
 
 /**
  * Routes
