@@ -1,10 +1,27 @@
-<div class="grid-layout">
+<div class="filter-container">
+  <select id="year-filter">
+    <% const currentYear = new Date().getFullYear(); %> <% const eventYears =
+    events.map(event => new Date(event.event_date).getFullYear()).reduce((acc,
+    cur) => { if (!acc.includes(cur)) { acc.push(cur); } return acc; },
+    []).sort((a, b) => a - b); %>
+    <option value="">All Years</option>
+    <% eventYears.forEach(year => { %>
+    <option value="<%= year %>"><%= year %></option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="grid-layout" id="events-grid">
   <% events.forEach(event => { %>
-  <a href="/events/<%= event.id %>">
+  <a
+    href="/events/<%= event.id %>"
+    class="event-card"
+    data-year="<%= new Date(event.event_date).getFullYear() %>"
+  >
     <div class="card fade-in">
       <div class="card-image-container">
         <div class="card-badges-container">
-          <%- include('./status', {date: event.event_date}) %>
+          <%- include('./status', { date: event.event_date }) %>
           <span class="card-badge badge"><%= event.event_type %></span>
         </div>
         <img
@@ -26,3 +43,69 @@
   </a>
   <% }) %>
 </div>
+
+<style>
+  .filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    align-items: flex-end;
+  }
+
+  .filter-container select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-light-gray);
+    max-width: 8rem;
+
+    margin-bottom: 1rem;
+  }
+</style>
+
+<script>
+  const events = <%- JSON.stringify(events) %>;
+
+  // Add event listener to the year filter dropdown
+  document.getElementById('year-filter').addEventListener('change', function () {
+    const selectedYear = this.value; // Get the selected year
+    const eventsGrid = document.getElementById('events-grid'); // Get the grid container
+
+    // Clear all event cards
+    eventsGrid.innerHTML = '';
+
+    // Filter events based on the selected year and re-render them
+    const filteredEvents = events.filter(event => {
+      const eventYear = new Date(event.event_date).getFullYear();
+      return selectedYear === '' || eventYear.toString() === selectedYear;
+    });
+
+    // Render filtered events
+    filteredEvents.forEach(event => {
+      const eventCard = document.createElement('a');
+      eventCard.href = `/events/${event.id}`;
+      eventCard.className = 'event-card';
+      eventCard.setAttribute('data-year', new Date(event.event_date).getFullYear());
+
+      eventCard.innerHTML = `
+        <div class="card fade-in">
+          <div class="card-image-container">
+            <div class="card-badges-container">
+              <span class="card-badge badge">${event.event_type}</span>
+            </div>
+            <img src="/images/events/${event.id}.jpg" alt="" class="card-image" />
+          </div>
+          <div class="card-header">
+            <span class="card-caption caption">${event.course_name}</span>
+            <h3 class="card-title">${event.title}</h3>
+            <p class="card-description">${event.description}</p>
+          </div>
+        </div>
+      `;
+
+      eventsGrid.appendChild(eventCard);
+    });
+  });
+
+  // Log the events array for debugging purposes
+  console.log(events);
+</script>
