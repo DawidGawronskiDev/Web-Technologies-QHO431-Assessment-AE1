@@ -15,6 +15,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      z-index: 102;
     }
 
     .mobile-nav-button {
@@ -43,10 +45,11 @@
 
       width: 100%;
 
-      margin-top: 0.5rem;
       padding: 1rem 0;
       left: 0%;
       top: 100%;
+
+      z-index: 103;
     }
 
     .mobile-nav-content .nav-links-list {
@@ -88,13 +91,16 @@
       </div>
     </div>
   </div>
+  <div class="mobile-backdrop hidden"></div>
   <script>
     const mobileNav = document.getElementById("mobile-nav");
     const mobileButton = mobileNav.querySelector(".mobile-nav-button");
     const mobileContent = mobileNav.querySelector(".mobile-nav-content");
+    const mobileBackdrop = document.querySelector(".mobile-backdrop");
 
     mobileButton.addEventListener("click", () => {
       mobileContent.classList.toggle("hidden");
+      mobileBackdrop.classList.toggle("hidden");
     });
 
     const links = mobileContent.querySelectorAll(".nav-link");
