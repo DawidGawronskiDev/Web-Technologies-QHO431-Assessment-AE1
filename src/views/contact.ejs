@@ -1,4 +1,6 @@
-<%- include("./partials/root-layout", {title: "UpSpark | Contact", content: `
+<%- include("./partials/root-layout", {title: "UpSpark | Contact", content:
+`${include('./partials/breadcrumbs.ejs', { breadcrumbs: [ { name: "Home", href:
+"/" }, { name: "Contact", href: "/contact" } ] })}
 <main>
   ${include("./partials/section", {title: "Contact Us", description: `Have
   questions or need assistance? Reach out to us using the form below or contact
